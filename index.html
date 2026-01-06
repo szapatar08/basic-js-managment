@@ -10,9 +10,25 @@
     <main>
         <section>
             <button id="user-register">Registrar usuario</button>
+            <article>
+                <form class="hide">
+                    <input type="text" name="name" id="name" placeholder="Nombre">
+                    <input type="text" name="lastname" id="lastname" placeholder="Apellido">
+                    <input type="number" name="age" id="age" placeholder="Edad">
+                    <input type="email" name="email" id="email" placeholder="Correo">
+                    <input type="number" name="id" id="id" placeholder="Documento">
+                    <select name="gender" id="gender">
+                        <option value="men">Hombre</option>
+                        <option value="women">Mujer</option>
+                    </select>
+                    <p id="error-register" class="error hide"></p>
+                    <button>Registrar</button>
+                </form>
+            </article>
         </section>
         <section>
             <button id="show-user-info">Ver información del usuario</button>
+            <input type="text" name="search-user" id="search-user">
         </section>
         <section>
             <button id="check-age">Validar mayoría de edad</button>
