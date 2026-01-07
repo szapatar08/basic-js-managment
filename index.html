@@ -11,6 +11,7 @@
         <section>
             <button id="user-register">Registrar usuario</button>
             <article id="user-register-form" class="hide">
+                <button class="back-home hide">Regresar</button>
                 <form>
                     <input type="text" name="name" id="name" placeholder="Nombre">
                     <input type="text" name="lastname" id="lastname" placeholder="Apellido">
@@ -34,6 +35,8 @@
                 <button id="search-user-btn" class="hide search-button">Buscar</button>
             </article>
             <article id="data-searched">
+                <button class="back-home hide">Regresar</button>
+                <div></div>
             </article>
         </section>
 
@@ -43,7 +46,10 @@
                 <input type="number" name="search-user" id="search-user-age" placeholder="Documento del usuario" class="hide search-user">
                 <button id="search-user-btn-age" class="hide search-button">Buscar</button>
             </article>
-            <p id="age-container" class="hide content-p"></p>
+            <article id="age-container-article">
+                <button class="back-home hide">Regresar</button>
+                <p id="age-container" class="hide content-p"></p>
+            </article>
         </section>
 
         <section>
@@ -52,7 +58,10 @@
                 <input type="number" name="search-user" id="search-user-status" placeholder="Documento del usuario" class="hide search-user">
                 <button id="search-user-btn-status" class="hide search-button">Buscar</button>
             </article>
-            <p id="status-container" class="hide content-p"></p>
+            <article id="status-container-article">
+                <button class="back-home hide">Regresar</button>
+                <p id="status-container" class="hide content-p"></p>
+            </article>
         </section>
         <p class="error hide" id="error-main-message"></p>
     </main>

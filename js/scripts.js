@@ -10,7 +10,9 @@ const errorMessage = document.querySelector("#error-main-message");
 // Register Users
 userRegisterBtn.addEventListener("click", function() {
     displayMainMenu("none")
+    document.querySelector("#error-register").style.display = "none";
     document.querySelector("#user-register-form").style.display = "block";
+    document.querySelector("#user-register-form .back-home").style.display = "block";
     document.querySelector("#register").addEventListener("click", function() {
         const inputName = document.querySelector("#name");
         const inputLastame = document.querySelector("#lastname");
@@ -22,14 +24,15 @@ userRegisterBtn.addEventListener("click", function() {
 
         if (+inputAge.value > 0 && +inputDoc.value > 0) {
             if (inputName.value === "" && inputLastame.value === "" && inputEmail.value === "") {
-                errorRegisterMesssage.textContent = "All the fields have to be field";
+                errorRegisterMesssage.textContent = "Todas las filas que tienen que completar";
                 errorRegisterMesssage.style.display = "block";
             } else {
                 errorRegisterMesssage.style.display = "block";
                 errorRegisterMesssage.style.color = "green";
                 errorRegisterMesssage.style.borderColor = "green";
                 errorRegisterMesssage.textContent = "El usuario fue correctamente registrado";
-                users.push({nombre: inputName.value, apellido: inputLastame,  edad: inputAge, correo: inputEmail, documento: inputDoc, genero: inputGender, estado: "active"})
+                users.push({nombre: inputName.value, apellido: inputLastame.value,  edad: inputAge.value, correo: inputEmail.value, documento: inputDoc.value, genero: inputGender.value, estado: "active"})
+                console.log(users)
                 inputName.value = "";
                 inputLastame.value = "";
                 inputAge.value = "";
@@ -58,7 +61,9 @@ showUserInfoBtn.addEventListener("click", function() {
             const i = search(searchUserDoc, users);
             if (i != -10) {
                 displayMainMenu("none")
-                document.querySelector("#data-searched").innerHTML = `
+                document.querySelector("#data-searched .back-home").style.display = "block";
+                document.querySelector("#data-searched").style.display = "block";
+                document.querySelector("#data-searched div").innerHTML = `
                 <p>Nombre: ${users[i].nombre}</p>
                 <p>Apellido: ${users[i].apellido}</p>
                 <p>Edad: ${users[i].edad}</p>
@@ -91,6 +96,8 @@ checkAgeBtn.addEventListener("click", function() {
             if (i != 10) {
                 displayMainMenu("none")
                 document.querySelector("#age-container").style.display = "block";
+                document.querySelector("#age-container-article .back-home").style.display = "block";
+                document.querySelector("#age-container-article").style.display = "block";
                 if (+users[i].edad > 17) {
                     document.querySelector("#age-container").textContent = `El usuario con nombre ${users[i].nombre} si es mayor de edad, tiene ${users[i].edad}`
                 } else {
@@ -121,12 +128,14 @@ changeUserStatusBtn.addEventListener("click", function() {
             if (i != 10) {
                 displayMainMenu("none")
                 document.querySelector("#status-container").style.display = "block";
+                document.querySelector("#status-container-article .back-home").style.display = "block";
+                document.querySelector("#status-container-article").style.display = "block";
                 if (users[i].estado === "activo") {
                     users[i].estado = "inactivo";
-                    document.querySelector("#status-container").textContent = `El estado de ${users[i].nombre} era de activo, quedo inactivo`;
+                    document.querySelector("#status-container").textContent = `El estado de ${users[i].nombre} era activo, quedo inactivo`;
                 } else {
                     users[i].estado = "activo";
-                    document.querySelector("#status-container").textContent = `El estado de ${users[i].nombre} era de inactivo, quedo activo`;
+                    document.querySelector("#status-container").textContent = `El estado de ${users[i].nombre} era inactivo, quedo activo`;
                 }
             } else {
                 errorMessage.textContent = "No se encontraron usuarios con este documento.";
@@ -134,6 +143,22 @@ changeUserStatusBtn.addEventListener("click", function() {
             }
         })
     }
+})
+
+document.querySelector("#user-register-form .back-home").addEventListener("click", function() {
+    backHome()
+})
+
+document.querySelector("#data-searched .back-home").addEventListener("click", function() {
+    backHome()
+})
+
+document.querySelector("#age-container-article .back-home").addEventListener("click", function() {
+    backHome()
+})
+
+document.querySelector("#status-container-article .back-home").addEventListener("click", function() {
+    backHome()
 })
 
 // Functions
@@ -152,4 +177,16 @@ function displayMainMenu(value) {
     checkAgeBtn.style.display = value;
     changeUserStatusBtn.style.display = value;
     errorMessage.style.display = value;
+}
+
+function backHome() {
+    const elementoHide = ["#user-register-form", ".back-home", "#data-searched", "#age-container-article", "#status-container-article", "#search-user", "#search-user-btn", "#search-user-age", "#search-user-btn-age", "#search-user-status", "#search-user-btn-status"];
+    for (let i = 0; i < elementoHide.length; i++) {
+        document.querySelector(elementoHide[i]).style.display = "none";
+    }
+    displayMainMenu("block")
+    errorMessage.style.display = "none";
+    document.querySelector("#show-user-info-btn").style.display = "block";
+    document.querySelector("#check-age-btn").style.display = "block";
+    document.querySelector("#change-user-status-btn").style.display = "block";
 }
