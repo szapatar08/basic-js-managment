@@ -82,3 +82,35 @@ input[type="number"] {
   -moz-appearance: textfield;
   appearance: textfield;
 }
+
+/*Search a user*/
+main section #search-user {
+    height: 50px;
+    width: 360px;
+    padding: 0 20px;
+    margin-bottom: 50px;
+    font-size: 24px;
+    font-weight: bold;
+    border: 2px solid #000;
+    border-radius: 50px;
+}
+
+main section #search-user-btn {
+    width: 100px;
+}
+
+main section #data-searched {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+main section #data-searched p {
+    height: 50px;
+    width: 500px;
+    border: 2px solid #000;
+    border-radius: 10px;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+}
