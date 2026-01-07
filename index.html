@@ -10,16 +10,16 @@
     <main>
         <section>
             <button id="user-register">Registrar usuario</button>
-            <article>
-                <form class="hide">
+            <article id="user-register-form" class="hide">
+                <form>
                     <input type="text" name="name" id="name" placeholder="Nombre">
                     <input type="text" name="lastname" id="lastname" placeholder="Apellido">
                     <input type="number" name="age" id="age" placeholder="Edad">
                     <input type="email" name="email" id="email" placeholder="Correo">
                     <input type="number" name="id" id="id" placeholder="Documento">
                     <select name="gender" id="gender">
-                        <option value="men">Hombre</option>
-                        <option value="women">Mujer</option>
+                        <option value="masculino">Masculino</option>
+                        <option value="femenino">Femenino</option>
                     </select>
                     <p id="error-register" class="error hide"></p>
                     <button>Registrar</button>
@@ -27,9 +27,11 @@
             </article>
         </section>
         <section>
-            <button id="show-user-info">Ver información del usuario</button>
-            <input type="number" name="search-user" id="search-user" placeholder="Documento del usuario" class="hide">
-            <button id="search-user-btn" class="hide">Buscar</button>
+            <article id="show-user-info">
+                <button id="show-user-info-btn">Ver información del usuario</button>
+                <input type="number" name="search-user" id="search-user" placeholder="Documento del usuario" class="hide">
+                <button id="search-user-btn" class="hide">Buscar</button>
+            </article>
             <article id="data-searched">
             </article>
         </section>
@@ -39,6 +41,7 @@
         <section>
             <button id="change-user-status">Cambiar estado del usuario</button>
         </section>
+        <p class="error hide" id="error-main-message"></p>
     </main>
     <script src="js/scripts.js"></script>
 </body>
