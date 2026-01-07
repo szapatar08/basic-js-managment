@@ -52,6 +52,7 @@ showUserInfoBtn.addEventListener("click", function() {
         document.querySelector("#show-user-info-btn").style.display = "none";
         document.querySelector("#search-user").style.display = "inline";
         document.querySelector("#search-user-btn").style.display = "inline";
+
         document.querySelector("#search-user-btn").addEventListener("click", function() {
             const searchUserDoc = document.querySelector("#search-user");
             const i = search(searchUserDoc, users);
@@ -66,6 +67,35 @@ showUserInfoBtn.addEventListener("click", function() {
                 <p>Genero: ${users[i].genero}</p>
                 <p>Estado: ${users[i].estado}</p>
                 `;
+            } else {
+                errorMessage.textContent = "No se encontraron usuarios con este documento.";
+                errorMessage.style.display = "block";
+            }
+        })
+    }
+})
+
+//Check if is underage
+checkAgeBtn.addEventListener("click", function() {
+    if (users.length === 0){
+        errorMessage.style.display = "block";
+        errorMessage.textContent = "No hay usuarios registrado";
+    } else {
+        document.querySelector("#check-age").style.display = "none";
+        document.querySelector("#search-user-age").style.display = "inline";
+        document.querySelector("#search-user-btn-age").style.display = "inline";
+        
+        document.querySelector("#search-user-btn-age").addEventListener("click", function() {
+            const searchUserDoc = document.querySelector("#search-user-age");
+            const i = search(searchUserDoc, users);
+            if (i != 10) {
+                hideMainMenu()
+                document.querySelector("#age-container").style.display = "block";
+                if (+users[i].edad > 17) {
+                    document.querySelector("#age-container").textContent = `El usuario con nombre ${users[i].nombre} si es mayor de edad, tiene ${users[i].edad}`
+                } else {
+                    document.querySelector("#age-container").textContent = `El usuario con nombre ${users[i].nombre} no es mayor de edad, tiene ${users[i].edad}`
+                }
             } else {
                 errorMessage.textContent = "No se encontraron usuarios con este documento.";
                 errorMessage.style.display = "block";

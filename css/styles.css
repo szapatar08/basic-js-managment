@@ -80,7 +80,7 @@ input[type="number"] {
 }
 
 /*Search a user*/
-main section #search-user {
+main section #search-user, #search-user-age {
     height: 50px;
     width: 360px;
     padding: 0 20px;
@@ -91,7 +91,7 @@ main section #search-user {
     border-radius: 50px;
 }
 
-main section #search-user-btn {
+main section #search-user-btn, #search-user-btn-age {
     width: 100px;
 }
 
@@ -101,7 +101,7 @@ main section #data-searched {
     gap: 20px;
 }
 
-main section #data-searched p {
+main section #data-searched p,  p {
     height: 50px;
     width: 500px;
     border: 2px solid #000;
@@ -109,5 +109,5 @@ main section #data-searched p {
     font-size: 24px;
     display: flex;
     align-items: center;
-    padding-left: 20px;
+    padding: 20px;
 }
