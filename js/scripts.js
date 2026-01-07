@@ -54,26 +54,19 @@ showUserInfoBtn.addEventListener("click", function() {
         document.querySelector("#search-user-btn").style.display = "inline";
         document.querySelector("#search-user-btn").addEventListener("click", function() {
             const searchUserDoc = document.querySelector("#search-user");
-            let message = true;
-            console.log(searchUserDoc.value)
-            for (let i = 0; i < users.length; i ++) {
-                if (searchUserDoc.value === users[i].documento){
-                    hideMainMenu()
-                    document.querySelector("#data-searched").innerHTML = `
-                    <p>Nombre: ${users[i].nombre}</p>
-                    <p>Apellido: ${users[i].apellido}</p>
-                    <p>Edad: ${users[i].edad}</p>
-                    <p>Correo: ${users[i].correo}</p>
-                    <p>Documento: ${users[i].documento}</p>
-                    <p>Genero: ${users[i].genero}</p>
-                    <p>Estado: ${users[i].estado}</p>
-                    `;
-                    message = false;
-                } else {
-                    message = true;
-                }
-            }
-            if (message) {
+            const i = search(searchUserDoc, users);
+            if (i != -10) {
+                hideMainMenu()
+                document.querySelector("#data-searched").innerHTML = `
+                <p>Nombre: ${users[i].nombre}</p>
+                <p>Apellido: ${users[i].apellido}</p>
+                <p>Edad: ${users[i].edad}</p>
+                <p>Correo: ${users[i].correo}</p>
+                <p>Documento: ${users[i].documento}</p>
+                <p>Genero: ${users[i].genero}</p>
+                <p>Estado: ${users[i].estado}</p>
+                `;
+            } else {
                 errorMessage.textContent = "No se encontraron usuarios con este documento.";
                 errorMessage.style.display = "block";
             }
@@ -82,6 +75,14 @@ showUserInfoBtn.addEventListener("click", function() {
 })
 
 // Functions
+function search (input, array) {
+    for (let i = 0; i < users.length; i ++) {
+        if (input.value === array[i].documento){
+        return i
+        }
+    }
+    return -10
+}
 
 function hideMainMenu() {
     userRegisterBtn.style.display = "none";
