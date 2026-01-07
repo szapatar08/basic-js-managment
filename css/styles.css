@@ -15,10 +15,6 @@ body {
     background-color: #d9d9d9;
 }
 
-.hide {
-    display: none;
-}
-
 main {
     border: 2px solid #000;
     border-radius: 5px;
@@ -80,7 +76,7 @@ input[type="number"] {
 }
 
 /*Search a user*/
-main section #search-user, #search-user-age {
+main section .search-user{
     height: 50px;
     width: 360px;
     padding: 0 20px;
@@ -91,7 +87,7 @@ main section #search-user, #search-user-age {
     border-radius: 50px;
 }
 
-main section #search-user-btn, #search-user-btn-age {
+main section .search-button{
     width: 100px;
 }
 
@@ -101,7 +97,7 @@ main section #data-searched {
     gap: 20px;
 }
 
-main section #data-searched p,  p {
+main section #data-searched p, .content-p {
     height: 50px;
     width: 500px;
     border: 2px solid #000;
@@ -109,5 +105,9 @@ main section #data-searched p,  p {
     font-size: 24px;
     display: flex;
     align-items: center;
-    padding: 20px;
+    padding: 5px 20px;
+}
+
+.hide {
+    display: none;
 }

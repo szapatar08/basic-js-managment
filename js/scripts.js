@@ -1,5 +1,5 @@
 let users = [
-    {nombre: "Santiago", apellido: "Zapata",  edad: "17", correo: "dev.santizapata@gmail.com", documento: "1033491102", genero: "masculino", estado: "active"}
+    {nombre: "Santiago", apellido: "Zapata",  edad: "17", correo: "dev.santizapata@gmail.com", documento: "1033491102", genero: "masculino", estado: "activo"}
 ];
 const userRegisterBtn = document.querySelector("#user-register");
 const showUserInfoBtn = document.querySelector("#show-user-info");
@@ -95,6 +95,38 @@ checkAgeBtn.addEventListener("click", function() {
                     document.querySelector("#age-container").textContent = `El usuario con nombre ${users[i].nombre} si es mayor de edad, tiene ${users[i].edad}`
                 } else {
                     document.querySelector("#age-container").textContent = `El usuario con nombre ${users[i].nombre} no es mayor de edad, tiene ${users[i].edad}`
+                }
+            } else {
+                errorMessage.textContent = "No se encontraron usuarios con este documento.";
+                errorMessage.style.display = "block";
+            }
+        })
+    }
+})
+
+//Change status
+changeUserStatusBtn.addEventListener("click", function() {
+    if (users.length === 0){
+        errorMessage.style.display = "block";
+        errorMessage.textContent = "No hay usuarios registrado";
+    } else {
+        document.querySelector("#change-user-status").style.display = "none";
+        document.querySelector("#search-user-status").style.display = "inline";
+        document.querySelector("#search-user-btn-status").style.display = "inline";
+        
+        document.querySelector("#search-user-btn-status").addEventListener("click", function() {
+            const searchUserDoc = document.querySelector("#search-user-status");
+            const i = search(searchUserDoc, users);
+            console.log(i)
+            if (i != 10) {
+                hideMainMenu()
+                document.querySelector("#status-container").style.display = "block";
+                if (users[i].estado === "activo") {
+                    users[i].estado = "inactivo";
+                    document.querySelector("#status-container").textContent = `El estado de ${users[i].nombre} era de activo, quedo inactivo`;
+                } else {
+                    users[i].estado = "activo";
+                    document.querySelector("#status-container").textContent = `El estado de ${users[i].nombre} era de inactivo, quedo activo`;
                 }
             } else {
                 errorMessage.textContent = "No se encontraron usuarios con este documento.";
