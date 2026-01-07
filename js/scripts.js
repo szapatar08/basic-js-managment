@@ -22,6 +22,7 @@ showUserInfoBtn.addEventListener("click", function() {
         document.querySelector("#search-user-btn").style.display = "inline";
         document.querySelector("#search-user-btn").addEventListener("click", function() {
             const searchUserDoc = document.querySelector("#search-user");
+            let message = true;
             console.log(searchUserDoc.value)
             for (let i = 0; i < users.length; i ++) {
                 if (searchUserDoc.value === users[i].documento){
@@ -35,10 +36,14 @@ showUserInfoBtn.addEventListener("click", function() {
                     <p>Genero: ${users[i].genero}</p>
                     <p>Estado: ${users[i].estado}</p>
                     `;
+                    message = false;
                 } else {
-                    errorMessage.style.display = "block";
-                    errorMessage.textContent = "No hay usuarios registrados con ese documento";
+                    message = true;
                 }
+            }
+            if (message) {
+                errorMessage.textContent = "No se encontraron usuarios con este documento.";
+                errorMessage.style.display = "block";
             }
         })
     }
