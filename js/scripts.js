@@ -9,7 +9,7 @@ const errorMessage = document.querySelector("#error-main-message");
 
 // Register Users
 userRegisterBtn.addEventListener("click", function() {
-    hideMainMenu()
+    displayMainMenu("none")
     document.querySelector("#user-register-form").style.display = "block";
     document.querySelector("#register").addEventListener("click", function() {
         const inputName = document.querySelector("#name");
@@ -57,7 +57,7 @@ showUserInfoBtn.addEventListener("click", function() {
             const searchUserDoc = document.querySelector("#search-user");
             const i = search(searchUserDoc, users);
             if (i != -10) {
-                hideMainMenu()
+                displayMainMenu("none")
                 document.querySelector("#data-searched").innerHTML = `
                 <p>Nombre: ${users[i].nombre}</p>
                 <p>Apellido: ${users[i].apellido}</p>
@@ -81,7 +81,7 @@ checkAgeBtn.addEventListener("click", function() {
         errorMessage.style.display = "block";
         errorMessage.textContent = "No hay usuarios registrado";
     } else {
-        document.querySelector("#check-age").style.display = "none";
+        document.querySelector("#check-age-btn").style.display = "none";
         document.querySelector("#search-user-age").style.display = "inline";
         document.querySelector("#search-user-btn-age").style.display = "inline";
         
@@ -89,7 +89,7 @@ checkAgeBtn.addEventListener("click", function() {
             const searchUserDoc = document.querySelector("#search-user-age");
             const i = search(searchUserDoc, users);
             if (i != 10) {
-                hideMainMenu()
+                displayMainMenu("none")
                 document.querySelector("#age-container").style.display = "block";
                 if (+users[i].edad > 17) {
                     document.querySelector("#age-container").textContent = `El usuario con nombre ${users[i].nombre} si es mayor de edad, tiene ${users[i].edad}`
@@ -110,7 +110,7 @@ changeUserStatusBtn.addEventListener("click", function() {
         errorMessage.style.display = "block";
         errorMessage.textContent = "No hay usuarios registrado";
     } else {
-        document.querySelector("#change-user-status").style.display = "none";
+        document.querySelector("#change-user-status-btn").style.display = "none";
         document.querySelector("#search-user-status").style.display = "inline";
         document.querySelector("#search-user-btn-status").style.display = "inline";
         
@@ -119,7 +119,7 @@ changeUserStatusBtn.addEventListener("click", function() {
             const i = search(searchUserDoc, users);
             console.log(i)
             if (i != 10) {
-                hideMainMenu()
+                displayMainMenu("none")
                 document.querySelector("#status-container").style.display = "block";
                 if (users[i].estado === "activo") {
                     users[i].estado = "inactivo";
@@ -146,10 +146,10 @@ function search (input, array) {
     return -10
 }
 
-function hideMainMenu() {
-    userRegisterBtn.style.display = "none";
-    showUserInfoBtn.style.display = "none";
-    checkAgeBtn.style.display = "none";
-    changeUserStatusBtn.style.display = "none";
-    errorMessage.style.display = "none";
+function displayMainMenu(value) {
+    userRegisterBtn.style.display = value;
+    showUserInfoBtn.style.display = value;
+    checkAgeBtn.style.display = value;
+    changeUserStatusBtn.style.display = value;
+    errorMessage.style.display = value;
 }
