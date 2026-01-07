@@ -34,7 +34,7 @@ main {
 
 /*Main menu*/
 
-main section button {
+main section button, #register {
     height: 50px;
     width: 500px;
     margin-bottom: 50px;
@@ -46,7 +46,7 @@ main section button {
     cursor: pointer;
 }
 
-main section button:hover {
+main section button:hover, #register:hover {
     background-color: #928f8f;
 }
 

@@ -7,11 +7,43 @@ const checkAgeBtn = document.querySelector("#check-age");
 const changeUserStatusBtn = document.querySelector("#change-user-status");
 const errorMessage = document.querySelector("#error-main-message");
 
+// Register Users
 userRegisterBtn.addEventListener("click", function() {
     hideMainMenu()
     document.querySelector("#user-register-form").style.display = "block";
+    document.querySelector("#register").addEventListener("click", function() {
+        const inputName = document.querySelector("#name");
+        const inputLastame = document.querySelector("#lastname");
+        const inputAge = document.querySelector("#age");
+        const inputEmail = document.querySelector("#email");
+        const inputDoc = document.querySelector("#id");
+        const inputGender = document.querySelector("#gender");
+        const errorRegisterMesssage = document.querySelector("#error-register");
+
+        if (+inputAge.value > 0 && +inputDoc.value > 0) {
+            if (inputName.value === "" && inputLastame.value === "" && inputEmail.value === "") {
+                errorRegisterMesssage.textContent = "All the fields have to be field";
+                errorRegisterMesssage.style.display = "block";
+            } else {
+                errorRegisterMesssage.style.display = "block";
+                errorRegisterMesssage.style.color = "green";
+                errorRegisterMesssage.style.borderColor = "green";
+                errorRegisterMesssage.textContent = "El usuario fue correctamente registrado";
+                users.push({nombre: inputName.value, apellido: inputLastame,  edad: inputAge, correo: inputEmail, documento: inputDoc, genero: inputGender, estado: "active"})
+                inputName.value = "";
+                inputLastame.value = "";
+                inputAge.value = "";
+                inputEmail.value = "";
+                inputDoc.value = "";
+            }
+        } else {
+            errorRegisterMesssage.textContent = "The age and documento has to be bigger than 0";
+            errorRegisterMesssage.style.display = "block";
+        }
+    })
 })
 
+// Search users
 showUserInfoBtn.addEventListener("click", function() {
     if (users.length === 0){
         errorMessage.style.display = "block";
