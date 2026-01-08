@@ -31,7 +31,7 @@ userRegisterBtn.addEventListener("click", function() {
                 errorRegisterMesssage.style.color = "green";
                 errorRegisterMesssage.style.borderColor = "green";
                 errorRegisterMesssage.textContent = "El usuario fue correctamente registrado";
-                users.push({nombre: inputName.value, apellido: inputLastame.value,  edad: inputAge.value, correo: inputEmail.value, documento: inputDoc.value, genero: inputGender.value, estado: "active"})
+                users.push({nombre: inputName.value, apellido: inputLastame.value,  edad: inputAge.value, correo: inputEmail.value, documento: inputDoc.value, genero: inputGender.value, estado: "activo"})
                 console.log(users)
                 inputName.value = "";
                 inputLastame.value = "";
